@@ -27,7 +27,7 @@ public class User {
     @Column
     private String image;
 
-    @Enumerated(value = EnumType.ORDINAL )
+    @Enumerated(value = EnumType.STRING )
     private Role role;
 
     public Long getId() {
