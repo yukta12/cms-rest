@@ -16,8 +16,6 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "post_cat_id")
-    private Long postCatId;
 
     @Column(name="post_title")
     private String postTitle;
