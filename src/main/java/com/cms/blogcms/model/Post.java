@@ -6,7 +6,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name="posts")
@@ -30,8 +29,8 @@ public class Post {
     @JsonIgnore
     private User user;
 
-    @Column(name = "post_date")
-    private Date postDate;
+
+
 
     @Column(name="post_image")
     private String postImage;
@@ -72,14 +71,6 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Date getPostDate() {
-        return postDate;
-    }
-
-    public void setPostDate(Date postDate) {
-        this.postDate = postDate;
     }
 
     public String getPostImage() {
