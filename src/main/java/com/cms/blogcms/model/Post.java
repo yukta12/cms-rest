@@ -23,10 +23,11 @@ public class Post {
     @Column(name="post_title")
     private String postTitle;
 
-    @ManyToOne(fetch = FetchType.LAZY , optional = false)
-    @JoinColumn(name = "user_id",nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER , optional = false)
+    @JoinColumn(name = "post_author",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
+    //if the fetch is lazy it creates any excption that serailizable class not found
+//    @JsonIgnore ignores in json
     private User user;
 
 
@@ -40,6 +41,10 @@ public class Post {
 
     @Column(name = "post_tags")
     private String postTags;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(name="post_status")
+    private Status status;
 
     public Long getId() {
         return id;
@@ -105,6 +110,4 @@ public class Post {
         this.status = status;
     }
 
-    @Enumerated(value = EnumType.ORDINAL)
-    private Status status;
 }

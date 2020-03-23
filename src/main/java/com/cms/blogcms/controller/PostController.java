@@ -1,7 +1,7 @@
 package com.cms.blogcms.controller;
 
 
-import com.cms.blogcms.service.UserService;
+import com.cms.blogcms.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cms/user")
-public class UserController {
+@RequestMapping("/cms/posts")
+public class PostController {
     @Autowired
-    private UserService userService;
+    private PostService postService;
 
-
-    @RequestMapping(value = "/all",method = RequestMethod.GET)
-    public List getAllUsers() {
-        return userService.getAllUsers();
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public List getAllPosts(){
+       return  postService.getAllPosts();
     }
 }
