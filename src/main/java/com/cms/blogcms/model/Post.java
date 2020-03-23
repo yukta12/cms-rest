@@ -17,8 +17,14 @@ public class Post {
     private Long id;
 
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_cat_id" , referencedColumnName = "id")
+    private Category category;
+
+
     @Column(name="post_title")
     private String postTitle;
+
 
 
     @ManyToOne(fetch = FetchType.LAZY , optional = false)
