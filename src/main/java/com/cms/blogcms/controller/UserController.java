@@ -1,11 +1,10 @@
 package com.cms.blogcms.controller;
 
 
+import com.cms.blogcms.model.User;
 import com.cms.blogcms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +19,13 @@ public class UserController {
     public List getAllUsers() {
         return userService.getAllUsers();
     }
+
+    @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+    public User getUserById(@PathVariable Long id){ return  userService.getUserById(id);}
+
+    @RequestMapping(value = "/add" , method = RequestMethod.POST)
+    public void addUser(@RequestBody User user){ userService.addUser(user);}
+
+
+
 }
