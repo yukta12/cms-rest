@@ -26,6 +26,11 @@ public class UserController {
     @RequestMapping(value = "/add" , method = RequestMethod.POST)
     public void addUser(@RequestBody User user){ userService.addUser(user);}
 
+    @RequestMapping(value = "/{id}/edit" , method = RequestMethod.PATCH)
+    public void updateUser(@RequestBody User user, @PathVariable Long id){
+        user.setId(id);
+        userService.updateUser(user);
+    }
 
 
 }
