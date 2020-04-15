@@ -2,6 +2,8 @@ package com.cms.blogcms.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -16,14 +18,16 @@ public class Post {
     private Long id;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "post_cat_id" , referencedColumnName = "id")
     private Category category;
 
     @Column(name="post_title")
     private String postTitle;
 
-    @ManyToOne(fetch = FetchType.EAGER , optional = false)
+    @ManyToOne(fetch = FetchType.EAGER , optional = false )
+    @Fetch(FetchMode.JOIN)
+    @MapsId("id")
     @JoinColumn(name = "post_author",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     //if the fetch is lazy it creates any excption that serailizable class not found

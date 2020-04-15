@@ -22,7 +22,7 @@ public class UserService {
         return users;
     }
 
-    public User getUserById(Long id){
+    public User getUserById(Long     id){
         return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("not found"));
     }
 

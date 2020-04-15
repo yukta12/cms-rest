@@ -1,6 +1,8 @@
 package com.cms.blogcms.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -29,6 +31,11 @@ public class User {
 
     @Enumerated(value = EnumType.STRING )
     private Role role;
+
+    //user-post mapping
+    @OneToMany(mappedBy = "user")
+    //incomplete
+    private List<Post> posts;
 
     public Long getId() {
         return id;

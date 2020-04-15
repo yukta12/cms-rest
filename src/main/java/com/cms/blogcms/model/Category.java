@@ -12,6 +12,9 @@ public class Category {
     @Column(name="cat_title")
     private String categoryTitle;
 
+    @OneToOne(mappedBy = "category")
+    private Post post;
+
     public Long getId() {
         return id;
     }

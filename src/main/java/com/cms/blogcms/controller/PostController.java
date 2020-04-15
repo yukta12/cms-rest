@@ -1,16 +1,15 @@
 package com.cms.blogcms.controller;
 
 
+import com.cms.blogcms.model.Post;
 import com.cms.blogcms.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/cms/posts")
+@RequestMapping("/cms/post")
 public class PostController {
     @Autowired
     private PostService postService;
@@ -19,4 +18,10 @@ public class PostController {
     public List getAllPosts(){
        return  postService.getAllPosts();
     }
+
+    @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+    public Post getPostById(@PathVariable Long id){ return postService.getPostById(id);}
+
+    @RequestMapping(value = "/add" , method = RequestMethod.POST)
+    public void addPost(@RequestBody Post post ){  postService.addPost(post);}
 }
